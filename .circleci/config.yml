@@ -18,7 +18,29 @@ commands:
             git clone https://dozzler555:$token@github.com/dozzler555/rclone.git $HOME/.config/rclone
             curl https://rclone.org/install.sh | sudo bash
 
-            
+          name: Set Git Configs & Secrets
+          command: |
+               git config --global user.email 80205889+dozzler555@users.noreply.github.com
+               git config --global user.name dozzler555
+               git config --global credential.helper store
+               echo "https://dozzler555:$token@github.com" > ~/.git-credentials
+          name: setup easyclone
+          command: |
+           sudo apt install expect -y
+           git clone https://github.com/dozzler555/easyclone.git easyclone
+           cd easyclone
+           sudo chmod 777 easy.sh
+           pwd
+           pwd
+           pwd
+           mkdir -p $HOME/easyclone
+           cp -R /home/runner/work/easyclone/easyclone/easyclone/accounts/ /home/runner/easyclone/
+           { 
+            echo 2; 
+           } | ./easy.sh
+           sudo chmod a+x $HOME/easyclone/lclone
+
+
             
 jobs:
   test:
@@ -30,7 +52,7 @@ jobs:
       - run:
           name: rc
           command: |
-                rclone copy haa: onedrive:haa --checkers=50 --transfers=8 --tpslimit=8 --onedrive-chunk-size=320M --drive-chunk-size=256M -vv
+                lclone copy haa: onedrive:haa --checkers=50 --transfers=8 --onedrive-chunk-size=320M -vv
 
 
       
