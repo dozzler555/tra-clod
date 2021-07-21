@@ -24,7 +24,7 @@ jobs:
   test:
     machine:
       image: ubuntu-2004:202101-01
-    resource_class: small
+    resource_class: medium
     steps:
       - setup
       - run:
