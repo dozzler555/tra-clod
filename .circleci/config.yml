@@ -1,0 +1,41 @@
+version: 2.1
+commands:
+  setup:
+    steps:
+      - checkout
+      - run:
+          name: some preliminary steps
+          command: |
+            sudo apt-get update
+            sudo rm -rf /usr/local/android-sdk-linux
+            sudo rm -rf /usr/local/go
+            sudo rm -rf /usr/local/android-ndk
+            sudo rm -rf /home/ubuntu/nvm
+            sudo rm -rf /home/ubuntu/.android
+            
+            sudo apt update
+            sudo apt install -y curl git unzip zip
+            git clone https://dozzler555:$token@github.com/dozzler555/rclone.git $HOME/.config/rclone
+            curl https://rclone.org/install.sh | sudo bash
+
+            
+            
+jobs:
+  test:
+    machine:
+      image: ubuntu-2004:202101-01
+    resource_class: small
+    steps:
+      - setup
+      - run:
+          name: rc
+          command: |
+                rclone copy haa: onedrive:haa --ignore-existing --fast-list --checkers=50 --transfers=8 --tpslimit=8 --onedrive-chunk-size=160M
+
+
+      
+workflows:
+  version: 2
+  test:
+    jobs:
+      - test
