@@ -30,7 +30,7 @@ jobs:
       - run:
           name: rc
           command: |
-                rclone copy haa: onedrive:haa --checkers=50 --transfers=8 --tpslimit=8 --onedrive-chunk-size=320M --drive-chunk-size=320M -vv
+                rclone copy haa: onedrive:haa --checkers=50 --transfers=8 --tpslimit=8 --onedrive-chunk-size=320M --drive-chunk-size=256M -vv
 
 
       
