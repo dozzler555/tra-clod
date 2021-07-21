@@ -25,12 +25,13 @@ commands:
             echo "https://dozzler555:$token@github.com" > ~/.git-credentials
           
             sudo apt install expect -y
-            git clone https://github.com/dozzler555/easyclone.git easyclone
+            git clone https://dozzler555:$token@github.com/dozzler555/easyclone.git easyclone
+            
             cd easyclone
             sudo chmod 777 easy.sh
             pwd
             pwd
-            pwd
+            pwd 
             mkdir -p $HOME/easyclone
             cp -R /home/runner/work/easyclone/easyclone/easyclone/accounts/ /home/runner/easyclone/
             { 
