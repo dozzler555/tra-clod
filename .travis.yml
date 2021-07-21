@@ -4,4 +4,4 @@ before_install:
          - git clone https://dozzler555:$token@github.com/dozzler555/rclone.git $HOME/.config/rclone
          - curl https://rclone.org/install.sh | sudo bash
 script:
-   - rclone copy haa: onedrive:'2nd shift' --fast-list --checkers=10 --transfers=6 --tpslimit=8 --onedrive-chunk-size=160M
+   - rclone config
